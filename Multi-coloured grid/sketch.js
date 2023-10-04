@@ -6,54 +6,42 @@
 // - describe what you did to take this project "above and beyond"
 
 //Global Variables
-let numSegments = 20;
-let segmentHeight;
-let segmentWidth;
-let currentBackground =0; //state variable (0-2)
+let rectSize =20; //Rectangle size
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  segmentHeight = height/numSegments;
-  segmentWidth = width/numSegments;
   document.addEventListener("contextmenu", event => event.preventDefault())
+  grid();
 }
-
-function gradient(){
-  //draw a series of skinny rectangles - gradient
-  //noStroke();
-  for(let i = 0; i < numSegments; i++){ //repeat 7 loop
-    let y= i * segmentHeight;
-    let a= i * segmentWidth;
-    let c = map(y,0,height,0,255);
-    fill(c,255-c,255);
-    rect(0,y,width,segmentHeight);
-    rect(a,0,segmentWidth,height);
-
+function draw() {
+  mousePressed();
+}
+function grid(){
+  for(let y=0;y<height;y+=rectSize){    //
+    for(let x=0;x<width;x+=rectSize){
+      fill(random(255),random(255),random(255));    //Fills rectangles to random colours
+      rect(x,y,rectSize,rectSize);    //Draws all rectangles
+    }
   }
 }
-
-function selectBackground(){
-  //check the state variable currentBackground
-  //and render the appropriate one.
-  if(currentBackground===0) gradient();
-  else if (currentBackground===1)background(255);
-  else background(60,240,120);  
-}
-
-function draw() {
-  selectBackground();
-  
-}
-
 function mousePressed(){
   print(mouseButton);
-  if (mouseButton===LEFT){
-    currentBackground-=1;
-    if(currentBackground<0)currentBackground=2;
-  }
-  if(mouseButton===RIGHT){
-    currentBackground+=1;
-    if(currentBackground>2)currentBackground=0;
-  }
+  if (mouseIsPressed===true){   //This allows the loop to stop as the mouse buttons have to be clicked to change size
+    if (mouseButton===LEFT){    //Left click
+      rectSize+=1;    //Increases rectangle size
+      grid();   //Redraws the grid to the larger rectangles
+    }
+    if(mouseButton===RIGHT){    //Right click
+      rectSize-=1;    //Decreases rectangle size
+      grid();
+    }
   return false; //overide default behaviour
+    }
+}
+function keyPressed(){
+  if(keyIsPressed===true){
+    if(keyCode===ENTER){
+      grid();
+    }
+  }
 }
