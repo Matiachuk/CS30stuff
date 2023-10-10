@@ -28,11 +28,11 @@ function mousePressed(){
   print(mouseButton);
   if (mouseIsPressed===true){   //This allows the loop to stop as the mouse buttons have to be clicked to change size
     if (mouseButton===LEFT){    //Left click
-      rectSize+=1;    //Increases rectangle size
+      rectSize+=2;    //Increases rectangle size
       grid();   //Redraws the grid to the larger rectangles
     }
     if(mouseButton===RIGHT){    //Right click
-      rectSize-=1;    //Decreases rectangle size
+      rectSize-=2;    //Decreases rectangle size
       grid();
     }
   return false; //overide default behaviour
