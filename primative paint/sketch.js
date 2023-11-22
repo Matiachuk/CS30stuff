@@ -2,8 +2,7 @@
 // Matiachuk, Skyler
 // Date
 //
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+// 
 
 
 function setup() {
@@ -12,5 +11,10 @@ function setup() {
 
 function draw() {
   background(220);
+  movingCircle();
+  
+}
+
+function movingCircle(){
   
 }
