@@ -62,8 +62,11 @@ function mousePressed(){
     if(col>0) flip(col-1, row); //LEFT NEIGHBOUR
     if(row <NUM_ROWS-1) flip(col,row+1); //DOWN NEIGHBOUR
   }
-    
 }
+
+
+    
+
 
 function flip(col, row){
   //at a given x,y, flip the value in the 2D array
